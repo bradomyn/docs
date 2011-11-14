@@ -1,0 +1,138 @@
+\title{Git Resume}
+\date{\today}
+
+\documentclass[12pt]{article}
+\newcommand \tb[1]{\textbf{#1}} 
+\newcommand \ti[1]{\textit{#1}} 
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Resume of Git commands \ldots
+\end{abstract}
+
+\section*{Creating a project}
+
+\tb{Configuration Repository}
+
+Starting with a repo: \\
+\ti{
+ git config --global user.name "Your Name" \\
+ git config --global user.email bradomyn@gmail.com \\
+ git config --global color.ui true \\
+ git add [file] \\
+ git commit -m 'first commit' \\ 
+ git remote add origin git@github.com:bradomyn/test.git \\
+ git push -u origin master \\
+}
+
+\tb{Staging}
+
+ If a file ready exists and we use "add" the changes are in the 
+ staging area, waiting for commit. \\
+
+ \ti{git reset HEAD <file>} to unstage
+
+\tb{Viewing status and differences}
+\noindent
+\ti{ git log -n when n is the numer of log messages that I want to see \\
+ git status \\
+}
+
+\ti{git diff} diferences between working tree \& stagin area.
+\ti{git diff --cached} stagin area \& repository
+\ti{git diff HEAD} working tree & repository
+
+
+\ti{git branch NEW-BRANCH  BASED-BRANCH}
+
+to create a new branch 
+
+ \ti{git commit -a}
+
+ That tells Git to commit all files that it knows about that have 
+ changed.
+
+ \ti{git add -i}
+
+displays a prompt
+
+\tb{Commiting}
+
+\noindent
+
+\ti{ git add some-file \\
+     git commit -m "changes to some-file" \\ }
+stag a file o part of a file, and then commit
+
+\ti{git commit -m "balab" -a}
+commits the latest version from your working  tree.
+
+
+\ti{git commit -m "changes to some-file" some-file}
+commits only this file
+
+\tb{Patch Mode}
+ 
+Using \ti{git add -i}, inside of the menu number 5. or 
+\ti{git add -p}
+
+hunk is a change in a file.
+
+
+
+
+\textbf{Exclude files from git}
+
+A global .gitignore file can also be used by adding one to your 
+global git config. For example, you might create the file 
+$~/.gitignore_global$ and add some rules to it. To add this to your 
+config, run: 
+
+\ti{git config --global core.excludesfile $~/.gitignore_global$}
+
+
+\begin{verbatim}
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Vim #
+#######
+*.swp
+\end{verbatim}
+
+
+\end{document}
