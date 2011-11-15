@@ -42,19 +42,15 @@ Starting with a repo: \\
 
 \ti{git diff} diferences between working tree \& stagin area.
 \ti{git diff --cached} stagin area \& repository
-\ti{git diff HEAD} working tree & repository
+\ti{git diff HEAD} working tree \& repository
 
 
-\ti{git branch NEW-BRANCH  BASED-BRANCH}
+\ti{git commit -a}
 
-to create a new branch 
+That tells Git to commit all files that it knows about that have 
+changed.
 
- \ti{git commit -a}
-
- That tells Git to commit all files that it knows about that have 
- changed.
-
- \ti{git add -i}
+\ti{git add -i}
 
 displays a prompt
 
@@ -73,6 +69,10 @@ commits the latest version from your working  tree.
 \ti{git commit -m "changes to some-file" some-file}
 commits only this file
 
+
+Breaking one commit in several(take a look at the documentation)
+
+
 \tb{Patch Mode}
  
 Using \ti{git add -i}, inside of the menu number 5. or 
@@ -80,8 +80,86 @@ Using \ti{git add -i}, inside of the menu number 5. or
 
 hunk is a change in a file.
 
+\textbf{Tagging}
+
+\ti{git tag NAME-TAG BRANCH}
+ 
+to see all the tags \ti{git tag}
 
 
+\tb{Merging}
+
+\ti{Stright Merging}
+
+git checkout BRANCH
+git merge BRANCH-TO-MERGE
+
+\ti{Squashing Commits}
+
+takes all the history of one branch and compresses it into one commit in the other branch
+
+\ti{Cherry-Picking Commits}
+
+to merge only one commit between branches and don’t need to do a full merge
+
+\ti{git cherry-pick 321d76f}
+
+\textbf{Rebase}
+Rebasing takes the changes from a branch and replays them on top of another branch
+
+First we have to change to branch where we want to get the changes 
+
+\ti{git checkout BRANCH}
+
+\ti{git rebase BRANCH-TO-REBASE}
+
+remove the branch
+
+\textbf{Branch}
+Create a branch
+\ti{git branch NEW-BRANCH  BASED-BRANCH}
+
+\ti{git checkout -b alternate master} short cut for creating moving into a
+branch
+
+Rename a branch -m BRANCH-NAME BRANCH-NEW-NAME
+
+Remove a branch
+
+git branch -d BRANCH-NAME
+
+\tb{Undoing}
+
+git commit -c -a --amend
+
+\ti{Reverting}
+
+\ti{git revert -n NUMBER-COMMIT}
+
+\ti{git commit -m "revert NUMBER-COMMIT"}
+
+without the -n the revert commits directly
+
+\ti{Resetting}
+
+git reset COMMIT-NAME
+
+--soft when you want to stage all the previous commits but not commit them.
+
+--hard It removes the commit from your repository and from your working tree. It’s the
+equivalent of a delete button on your repository with no “undo.”
+
+\tb{Archive}
+
+git archive --format=tar \
+            --prefix="xxx" \
+            | gzip > xxx.tar.gz
+
+
+
+\textbf{Merge vs Rebase}
+
+http://gitguru.com/2009/02/03/rebase-v-merge-in-git/
 
 \textbf{Exclude files from git}
 
